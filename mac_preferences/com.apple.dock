@@ -1,0 +1,12 @@
+{
+    autohide = 0;
+    largesize = 128;
+    loc = "en_US:TW";
+    magnification = 1;
+    "minimize-to-application" = 0;
+    "mod-count" = 844;
+    region = TW;
+    "show-recents" = 0;
+    showAppExposeGestureEnabled = 1;
+    "trash-full" = 1;
+}

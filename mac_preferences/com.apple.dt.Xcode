@@ -1,0 +1,18 @@
+{
+    DVTDeveloperAccountManagerAppleIDLists =     {
+        "IDE.Prod" =         (
+                        {
+                username = "nick10811@gmail.com";
+            },
+                        {
+                username = "nick.yang@shoalter.com";
+            }
+        );
+    };
+    DVTTextShowAuthors = 0;
+    DVTTextShowFoldingSidebar = 1;
+    DVTTextShowMinimap = 0;
+    IBAppliesAutoResizingRulesWhileResizing = 0;
+    IBPreferencesMigrated = 1;
+    IDEAlwaysShowCompressedStackFrames = 0;
+}

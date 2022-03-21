@@ -1,0 +1,12 @@
+{
+    ShowExternalHardDrivesOnDesktop = 1;
+    ShowHardDrivesOnDesktop = 0;
+    ShowRemovableMediaOnDesktop = 1;
+    ShowSidebar = 1;
+    SidebarDevicesSectionDisclosedState = 1;
+    SidebarPlacesSectionDisclosedState = 1;
+    SidebarShowingSignedIntoiCloud = 1;
+    SidebarShowingiCloudDesktop = 0;
+    SidebarWidth = 144;
+    SidebariCloudDriveSectionDisclosedState = 1;
+}
