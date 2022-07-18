@@ -120,6 +120,11 @@ function setupGit() {
     echo
 }
 
+function setupVim() {
+    echo "syntax on\nset t_Co=256" >> ~/.vimrc
+    source ~/.vimrc
+}
+
 function printDone() {
     echo
     echo "+----------------------------------------------+"
@@ -145,6 +150,7 @@ function printDone() {
 # main
 installBasic
 installDevelopment
+setupVim
 setupGit "$@"
 installProductivity
 installTeamwork
