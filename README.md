@@ -7,5 +7,5 @@ This is a tool that setup the Mac environment automatically. It installs all nec
 ## Usage
 
 ```bash
-$ ./install.sh -u "Your Name" -e "account@example.com"
+make all
 ```
