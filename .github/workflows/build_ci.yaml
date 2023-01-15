@@ -1,0 +1,29 @@
+name: Build CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_ci:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup
+        run: |
+          make setup
+      
+      - name: Configure
+        run: |
+          make configure
+
+      - name: Install apps
+        run: |
+          make install-dev
+          make install-dev-ios
+          make install-design
+          make install-productivity
+          make install-teamwork
+          make install-fun
