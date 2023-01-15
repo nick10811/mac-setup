@@ -1,6 +1,9 @@
 name: Build CI
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -19,11 +22,20 @@ jobs:
         run: |
           make configure
 
-      - name: Install apps
+      - name: Install dev apps
         run: |
           make install-dev
           make install-dev-ios
+      
+      - name: Install design apps
+        run: |
           make install-design
+      
+      - name: Install utility apps
+        run: | 
           make install-productivity
           make install-teamwork
+
+      - name: Install fun apps
+        run: |
           make install-fun
