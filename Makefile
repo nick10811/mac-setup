@@ -22,7 +22,10 @@ setup:
 	# Terminal setup
 	@echo "Installing iTerm2..."
 	brew install --cask iterm2  # Terminal emulator for macOS
+
+	@echo "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended # Oh My Zsh framework for managing Zsh configuration
+	@echo "Installed Oh My Zsh. $$SHELL"
 	brew install powerlevel10k  # Theme for Zsh
 	echo "source $$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
 	brew install --cask font-meslo-for-powerline  # Font with Powerline symbols
@@ -34,11 +37,10 @@ setup:
 
 	@echo "Updating .zshrc with new plugins..."
 	for plugin in $(PLUGINS); do \
-		if ! grep -q "$$plugin" ~/.zshrc; then \
-			sed -i '' "/^plugins=/ s/)/ $$plugin)/" ~/.zshrc; \
+		if ! grep -q "$plugin" ~/.zshrc; then \
+			sed -i '' "/^plugins=/ s/)/ $plugin)/" ~/.zshrc; \
 		fi; \
 	done
-	source ~/.zshrc
 	@echo ".zshrc updated."
 
 	# Vim setup
