@@ -27,15 +27,16 @@ jobs:
 
       # Install development tools
       - name: Install dev apps
-        run: make install-dev
-        # Uncomment the following line if you want to include iOS development tools
-        # run: make install-dev-ios
-
+        run: |
+          make install-dev
+          make install-dev-bed
+          make install-dev-ios
+      
       # Install design tools
       - name: Install design apps
         run: make install-design
 
-      # Install productivity and teamwork tools
+      # Install utility tools
       - name: Install utility apps
         run: |
           make install-productivity
