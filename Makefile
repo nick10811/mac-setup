@@ -70,14 +70,36 @@ install-dev:
 	brew install gitmoji  # Gitmoji CLI for using emojis in commit messages
 	brew install --cask fork  # Git GUI client
 	brew install --cask visual-studio-code  # Code editor
-	brew install --cask docker  # Container platform
+	python -m pip install --user virtualenv  # Virtual environments for Python
 	# brew install nvm # Node Version Manager
 	# brew install nodejs  # JavaScript runtime
-	# python -m pip install --user virtualenv  # Virtual environments for Python
+	# brew install --cask ngrok  # Secure introspectable tunnels to localhost
 
 	brew install --cask postman  # API development environment
 	# brew install --cask proxyman  # HTTP debugging proxy
 .PHONY: install-dev
+
+install-dev-bed:
+	@echo "\nInstalling backend tools...\n"
+
+	brew install --cask docker  # Container platform
+	brew install k9s  # Kubernetes CLI to manage clusters
+	brew install kubernetes-cli  # Kubernetes command-line tool
+	brew install helm  # Kubernetes package manager
+	brew install sops  # Secrets OPerationS
+	brew install prometheus  # Monitoring system and time series database
+	brew install go  # Go programming language
+	brew install --cask goland  # Go IDE
+
+	# cloud provider
+	brew install awscli  # AWS Command Line Interface
+	brew install azure-cli  # Azure Command Line Interface
+
+	# database
+	brew install mongosh  # MongoDB Shell
+	brew install --cask mongodb-compass  # MongoDB database management
+	brew install --cask studio-3t  # MongoDB GUI and IDE
+.PHONY: install-dev-bed
 
 install-dev-ios:
 	@echo "\nInstalling iOS development tools...\n"
@@ -86,6 +108,7 @@ install-dev-ios:
 	# sudo gem install cocoapods -v 1.7.1  # Specific version of CocoaPods
 	pod setup  # Set up CocoaPods master repo
 	brew install carthage  # Dependency manager for Cocoa
+	brew install sqlite  # Command-line interface for SQLite
 	# brew install fastlane  # Automation tool for iOS and Android
 	# brew install --cask dash  # API documentation browser
 	# brew install --cask android-studio  # Android development environment
@@ -95,7 +118,7 @@ install-design:
 	@echo "\nInstalling design tools...\n"
 
 	brew install --cask figma  # Interface design tool
-	brew install --cask zeplin  # Collaboration tool for designers and developers
+	# brew install --cask zeplin  # Collaboration tool for designers and developers
 .PHONY: install-design
 
 install-productivity:
@@ -107,8 +130,9 @@ install-productivity:
 	brew install --cask eul  # System monitor for Mac
 	brew install --cask hiddenbar  # Manage menu bar items on Mac
 	brew install --cask time-out  # Break reminder app
-	brew install --cask google-chrome  # Web browser
-	brew install --cask brave-browser  # Privacy-focused web browser
+	brew install --cask microsoft-edge  # Web browser
+	# brew install --cask google-chrome  # Web browser
+	# brew install --cask brave-browser  # Privacy-focused web browser
 	brew install --cask notion  # All-in-one workspace for notes, tasks, databases, and more
 	# brew install --cask teamviewer  # Remote control and desktop sharing
 	# brew install --cask anydesk  # Remote desktop application
