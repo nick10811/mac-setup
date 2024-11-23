@@ -1,0 +1,46 @@
+name: Verify Settings
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  verify:
+    runs-on: macos-latest
+
+    steps:
+      # Checkout the repository to get the Makefile and other necessary files
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Run the setup target from the Makefile, which includes Homebrew installation
+      - name: Setup
+        run: make setup
+
+      # Run the configure target from the Makefile
+      - name: Configure
+        run: make configure
+
+      # Install development tools
+      - name: Install dev apps
+        run: make install-dev
+        # Uncomment the following line if you want to include iOS development tools
+        # run: make install-dev-ios
+
+      # Install design tools
+      - name: Install design apps
+        run: make install-design
+
+      # Install productivity and teamwork tools
+      - name: Install utility apps
+        run: |
+          make install-productivity
+          make install-teamwork
+
+      # Install fun tools
+      - name: Install fun apps
+        run: make install-fun
