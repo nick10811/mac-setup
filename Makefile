@@ -28,6 +28,9 @@ setup:
 	brew install --cask font-meslo-for-powerline
 	git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	brew install zsh-syntax-highlighting
+	echo 'alias vsc="code"' >> ~/.zshrc
+	echo 'alias xcode="open -a Xcode"' >> ~/.zshrc
+	echo 'alias simulator="open -a Simulator"' >> ~/.zshrc
 .PHONY: setup
 
 configure:
