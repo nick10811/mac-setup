@@ -1,6 +1,7 @@
 NAME = "Your Name"
 EMAIL = "your@email.com"
 GITIGNORE = "linux,swift,xcode,macos,objective-c,visualstudiocode"
+PLUGINS = "zsh-syntax-highlighting zsh-autosuggestions zsh-completions"
 
 # INTEL_FLAGS = ""
 # ifneq ($(filter arm%,$(shell uname -p)),)
@@ -31,7 +32,6 @@ setup:
 	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  # Fish-like autosuggestions for Zsh
 	git clone https://github.com/zsh-users/zsh-completions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions  # Additional completion definitions for Zsh
 
-	PLUGINS = zsh-syntax-highlighting zsh-autosuggestions zsh-completions
 	@echo "Updating .zshrc with new plugins..."
 	for plugin in $(PLUGINS); do \
 		if ! grep -q "$$plugin" ~/.zshrc; then \
