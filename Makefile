@@ -25,8 +25,7 @@ setup:
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	brew install powerlevel10k
 	echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
-	brew tap homebrew/cask-fonts
-	brew install font-meslo-for-powerline
+	brew install --cask font-meslo-for-powerline
 	git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	brew install zsh-syntax-highlighting
 .PHONY: setup
