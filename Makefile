@@ -99,6 +99,7 @@ install-dev-bed:
 	brew install mongosh  # MongoDB Shell
 	brew install --cask mongodb-compass  # MongoDB database management
 	brew install --cask studio-3t  # MongoDB GUI and IDE
+	# brew install mongodb/brew/libmongocrypt  # MongoDB client-side field level encryption
 .PHONY: install-dev-bed
 
 install-dev-ios:
