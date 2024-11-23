@@ -18,6 +18,17 @@ setup:
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew install wget
 	brew install nmap
+
+	# terminal setup
+	# ref: https://gist.github.com/kevin-smets/8568070
+	brew install --cask iterm2 # terminal
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	brew install powerlevel10k
+	echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+	brew tap homebrew/cask-fonts
+	brew install font-meslo-for-powerline
+	git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+	brew install zsh-syntax-highlighting
 .PHONY: setup
 
 configure:
@@ -38,7 +49,6 @@ install-dev:
 
 	brew install gitmoji # integrate emoji into git commit
 	brew install --cask fork # GUI for git
-	brew install --cask iterm2 # terminal
 	brew install --cask visual-studio-code # Code editor
 
 	brew install --cask docker # Container
