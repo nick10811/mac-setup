@@ -113,7 +113,7 @@ install-teamwork:
 	@echo ""
 
 	# brew install --cask hamsket-nightly # all-in-one messaging station
-	brew install --cask zoomus
+	brew install --cask zoom
 	brew install --cask slack
 	# brew install --cask discord
 	# brew install --cask telegram
