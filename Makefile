@@ -15,19 +15,35 @@ setup:
 	@echo "Setting up"
 	@echo ""
 
+	@echo "Installing Homebrew..."
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew install wget
 	brew install nmap
 
 	# terminal setup
 	# ref: https://gist.github.com/kevin-smets/8568070
+	@echo "Installing iTerm2..."
 	brew install --cask iterm2 # terminal
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	brew install powerlevel10k
 	echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 	brew install --cask font-meslo-for-powerline
-	git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-	brew install zsh-syntax-highlighting
+	
+	@echo "Installing Oh My Zsh..."
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $$ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-autosuggestions $$ZSH_CUSTOM/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-completions $$ZSH_CUSTOM/plugins/zsh-completions
+
+	PLUGINS = zsh-syntax-highlighting zsh-autosuggestions zsh-completions
+	@echo "Updating .zshrc with new plugins..."
+	for plugin in $(PLUGINS); do \
+		if ! grep -q "$$plugin" ~/.zshrc; then \
+			sed -i '' "/^plugins=/ s/)/ $$plugin)/" ~/.zshrc; \
+		fi; \
+	done
+	source ~/.zshrc
+	@echo ".zshrc updated."
 
 	# vim
 	echo 'syntax on' >> ~/.vimrc
