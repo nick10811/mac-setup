@@ -1,6 +1,7 @@
 NAME = "Your Name"
 EMAIL = "your@email.com"
 GITIGNORE = "linux,swift,xcode,macos,objective-c,visualstudiocode"
+PLUGINS = "zsh-syntax-highlighting zsh-autosuggestions zsh-completions"
 
 # INTEL_FLAGS = ""
 # ifneq ($(filter arm%,$(shell uname -p)),)
@@ -14,31 +15,32 @@ setup:
 	@echo "\nSetting up...\n"
 
 	@echo "Installing Homebrew..."
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew install wget  # Utility to download files from the web
 	brew install nmap  # Network exploration tool and security/port scanner
 
 	# Terminal setup
 	@echo "Installing iTerm2..."
 	brew install --cask iterm2  # Terminal emulator for macOS
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended # Oh My Zsh framework for managing Zsh configuration
+
+	@echo "Installing Oh My Zsh..."
+	sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended # Oh My Zsh framework for managing Zsh configuration
+	@echo "Installed Oh My Zsh. $$SHELL"
 	brew install powerlevel10k  # Theme for Zsh
-	echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
+	echo "source $$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
 	brew install --cask font-meslo-for-powerline  # Font with Powerline symbols
 
 	@echo "Installing Oh My Zsh plugins..."
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting  # Syntax highlighting for Zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  # Fish-like autosuggestions for Zsh
-	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions  # Additional completion definitions for Zsh
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting  # Syntax highlighting for Zsh
+	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  # Fish-like autosuggestions for Zsh
+	git clone https://github.com/zsh-users/zsh-completions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions  # Additional completion definitions for Zsh
 
-	PLUGINS = zsh-syntax-highlighting zsh-autosuggestions zsh-completions
 	@echo "Updating .zshrc with new plugins..."
 	for plugin in $(PLUGINS); do \
-		if ! grep -q "$$plugin" ~/.zshrc; then \
-			sed -i '' "/^plugins=/ s/)/ $$plugin)/" ~/.zshrc; \
+		if ! grep -q "$plugin" ~/.zshrc; then \
+			sed -i '' "/^plugins=/ s/)/ $plugin)/" ~/.zshrc; \
 		fi; \
 	done
-	source ~/.zshrc
 	@echo ".zshrc updated."
 
 	# Vim setup
