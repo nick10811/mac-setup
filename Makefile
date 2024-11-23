@@ -2,10 +2,10 @@ NAME = "Your Name"
 EMAIL = "your@email.com"
 GITIGNORE = "linux,swift,xcode,macos,objective-c,visualstudiocode"
 
-INTEL_FLAGS = ""
-ifneq ($(filter arm%,$(shell uname -p)),)
-	INTEL_FLAG = "arch -x86_64"
-endif
+# INTEL_FLAGS = ""
+# ifneq ($(filter arm%,$(shell uname -p)),)
+# 	INTEL_FLAG = "arch -x86_64"
+# endif
 
 all: setup configure install-dev install-dev-ios install-design install-productivity install-teamwork install-fun
 .PHONY: all
