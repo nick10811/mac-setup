@@ -44,6 +44,7 @@ install-dev:
 	brew install --cask docker # Container
 	# brew install nvm # node version manager
 	# brew install nodejs
+	# python -m pip install --user virtualenv # python virtual environment
 
 	brew install --cask postman # API tool
 	# brew install --cask proxyman # Inspect HTTP(s) requests/responses
@@ -81,19 +82,16 @@ install-productivity:
 	brew install bat # customized of 'cat'
 	brew install --cask appcleaner
 	brew install --cask the-unarchiver
-	brew install --cask coconutbattery
-	brew install --cask eul
-	brew install --cask hiddenbar
+	brew install --cask eul # system monitor
+	brew install --cask hiddenbar # hide menu bar
 	brew install --cask time-out # remind you to break
 
 	brew install --cask google-chrome
-	# brew install --cask brave-browser
+	brew install --cask brave-browser
 
 	brew install --cask notion
 	# brew install --cask teamviewer # remote tool
 	# brew install --cask anydesk # remote tool
-
-	# brew install --cask time-out # remind you to break
 
 	# brew install --cask typora # MARKDOWN editor
 	# brew install --cask macdown # MARKDOWN editor
@@ -105,8 +103,8 @@ install-teamwork:
 	@echo ""
 
 	# brew install --cask hamsket-nightly # all-in-one messaging station
-	brew install --cask zoom
-	# brew install --cask slack
+	brew install --cask zoomus
+	brew install --cask slack
 	# brew install --cask discord
 	# brew install --cask telegram
 	# brew install --cask skype
