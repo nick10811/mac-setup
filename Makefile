@@ -21,11 +21,11 @@ setup:
 	# Terminal setup
 	@echo "Installing iTerm2..."
 	brew install --cask iterm2  # Terminal emulator for macOS
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  # Oh My Zsh framework for managing Zsh configuration
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended # Oh My Zsh framework for managing Zsh configuration
 	brew install powerlevel10k  # Theme for Zsh
 	echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
 	brew install --cask font-meslo-for-powerline  # Font with Powerline symbols
-	
+
 	@echo "Installing Oh My Zsh plugins..."
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting  # Syntax highlighting for Zsh
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  # Fish-like autosuggestions for Zsh
