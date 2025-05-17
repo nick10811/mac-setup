@@ -24,7 +24,7 @@ setup:
 	brew install --cask iterm2  # Terminal emulator for macOS
 
 	@echo "Installing Oh My Zsh..."
-	sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended # Oh My Zsh framework for managing Zsh configuration
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended # Oh My Zsh framework for managing Zsh configuration
 	@echo "Installed Oh My Zsh. $$SHELL"
 	brew install powerlevel10k  # Theme for Zsh
 	echo "source $$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
@@ -60,7 +60,7 @@ configure:
 
 	git config --global user.name $(NAME)  # Set global Git username
 	git config --global user.email $(EMAIL)  # Set global Git email
-	curl -sL https://www.gitignore.io/api/$(GITIGNORE) -o ~/.gitignore_global  # Download .gitignore template
+	curl -sL https://www.toptal.com/developers/gitignore/api/$(GITIGNORE) -o ~/.gitignore_global  # Download .gitignore template
 	git config --global core.excludesfile ~/.gitignore_global  # Set global .gitignore file
 .PHONY: configure
 
