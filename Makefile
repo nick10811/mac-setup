@@ -11,6 +11,32 @@ PLUGINS = "zsh-syntax-highlighting zsh-autosuggestions zsh-completions"
 all: setup configure install-dev install-dev-ios install-design install-productivity install-teamwork install-fun
 .PHONY: all
 
+# apps: install software only, without writing any config files (~/.zshrc, ~/.vimrc, etc.)
+# Intended to be called by dotfiles/install.sh so symlinks take precedence over config.
+apps: _brew _shell-tools install-dev install-dev-ios install-design install-productivity install-teamwork install-fun
+.PHONY: apps
+
+_brew:
+	@echo "\nInstalling Homebrew..."
+	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+.PHONY: _brew
+
+_shell-tools:
+	@echo "\nInstalling shell tools..."
+	brew install wget nmap
+	brew install --cask iterm2
+	brew install --cask font-meslo-for-powerline
+
+	@echo "Installing Oh My Zsh..."
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+	@echo "Installing Oh My Zsh plugins..."
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k || true
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
+	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
+	git clone https://github.com/zsh-users/zsh-completions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions || true
+.PHONY: _shell-tools
+
 setup:
 	@echo "\nSetting up...\n"
 
