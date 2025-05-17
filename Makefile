@@ -181,8 +181,19 @@ install-teamwork:
 
 install-fun:
 	@echo "\nInstalling fun tools...\n"
-	
+
 	brew install --cask spotify  # Music streaming service
 	# brew install --cask vlc  # Media player
 	# brew install --cask tradingview  # Charting and analysis tool for financial markets
 .PHONY: install-fun
+
+preferences:
+	@echo "\nApplying macOS preferences...\n"
+
+	defaults import com.apple.dock mac_preferences/com.apple.dock
+	defaults import com.apple.finder mac_preferences/com.apple.finder
+	defaults import com.apple.driver.AppleBluetoothMultitouch.trackpad mac_preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad
+	defaults import com.apple.Terminal mac_preferences/com.apple.Terminal
+	killall Dock Finder
+	@echo "macOS preferences applied."
+.PHONY: preferences
