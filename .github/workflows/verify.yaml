@@ -25,11 +25,10 @@ jobs:
       - name: Configure
         run: make configure
 
-      # Install development tools
+      # Install development tools (mirrors make all — install-dev-bed excluded as it is not part of make all)
       - name: Install dev apps
         run: |
           make install-dev
-          make install-dev-bed
           make install-dev-ios
       
       # Install design tools
