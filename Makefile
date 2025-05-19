@@ -1,7 +1,4 @@
-NAME = "Your Name"
-EMAIL = "your@email.com"
-GITIGNORE = "linux,swift,xcode,macos,objective-c,visualstudiocode"
-PLUGINS = "zsh-syntax-highlighting zsh-autosuggestions zsh-completions"
+include config.mk
 
 # INTEL_FLAGS = ""
 # ifneq ($(filter arm%,$(shell uname -p)),)

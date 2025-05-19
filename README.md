@@ -7,11 +7,11 @@ This is a tool that setup the Mac environment automatically. It installs all nec
 
 ## Before You Start
 
-Open `Makefile` and update these two variables before running anything:
+Open `config.mk` and update these two variables before running anything:
 
 ```makefile
-NAME  = "Your Name"    # ← your Git username
-EMAIL = "your@email.com"  # ← your Git email
+NAME  = "Your Name"      # ← your Git username
+EMAIL = "your@email.com" # ← your Git email
 ```
 
 If you don't update these, `make configure` will set your global Git identity to the literal strings above.
