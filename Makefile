@@ -49,8 +49,8 @@ setup:
 	@echo "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended # Oh My Zsh framework for managing Zsh configuration
 	@echo "Installed Oh My Zsh. $$SHELL"
-	brew install powerlevel10k  # Theme for Zsh
-	echo "source $$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >> ~/.zshrc
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k || true  # Theme for Zsh
+	echo 'source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 	brew install --cask font-meslo-for-powerline  # Font with Powerline symbols
 
 	@echo "Installing Oh My Zsh plugins..."
