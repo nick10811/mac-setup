@@ -7,18 +7,22 @@ This is a tool that setup the Mac environment automatically. It installs all nec
 
 ## Before You Start
 
-Open `config.mk` and update these two variables before running anything:
+**1. Set your identity** — open `config.mk` and update:
 
 ```makefile
 NAME  = "Your Name"      # ← your Git username
 EMAIL = "your@email.com" # ← your Git email
 ```
 
-If you don't update these, `make configure` will set your global Git identity to the literal strings above.
+If you skip this, `make configure` will write the literal strings above into your global Git config.
 
 You can also optionally adjust:
-- `GITIGNORE` — template combination for `.gitignore_global` (generate at [toptal.com/developers/gitignore](https://www.toptal.com/developers/gitignore))
-- `PLUGINS` — list of Oh My Zsh plugins to enable
+- `GITIGNORE` — template for `.gitignore_global` (generate at [toptal.com/developers/gitignore](https://www.toptal.com/developers/gitignore))
+- `PLUGINS` — Oh My Zsh plugins to enable
+
+**2. Choose your apps** — open `Brewfile` and delete any line for an app you don't want installed. Every app has a description to help you decide. The file represents Nick's recommended defaults — nothing is mandatory.
+
+**3. Run `make all`**
 
 ## Usage
 
