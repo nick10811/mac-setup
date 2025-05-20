@@ -14,13 +14,13 @@ cask "fork"                        # Git GUI client
 cask "visual-studio-code"          # Code editor
 cask "postman"                     # API development and testing
 brew "nvm"                         # Node Version Manager
-cask "ngrok"                       # Secure tunnel to localhost
+brew "ngrok"                       # Secure tunnel to localhost
 cask "proxyman"                    # HTTP debugging proxy
 
 # ── Dev — Backend / DevOps ───────────────────────────────────────────────────
 cask "docker"                      # Container platform
 brew "k9s"                         # Kubernetes CLI dashboard
-brew "kubernetes-cli"              # kubectl
+brew "kubernetes-cli"              # Kubernetes command-line tool (kubectl)
 brew "helm"                        # Kubernetes package manager
 brew "sops"                        # Secrets encryption (Secrets OPerationS)
 brew "go"                          # Go programming language
