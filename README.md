@@ -22,7 +22,9 @@ You can also optionally adjust:
 
 **2. Choose your apps** — open `Brewfile` and delete any line for an app you don't want installed. Every app has a description to help you decide. The file represents Nick's recommended defaults — nothing is mandatory.
 
-**3. Run `make all`**
+**3. Run `make all && make preferences`**
+
+`make all` installs software and configures your shell. `make preferences` applies macOS system settings (Dock, Finder, Trackpad, Terminal).
 
 ## Usage
 
