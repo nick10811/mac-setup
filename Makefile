@@ -19,10 +19,8 @@ _brew:
 .PHONY: _brew
 
 _shell-tools:
-	@echo "\nInstalling shell tools..."
-	brew install wget nmap
-	brew install --cask iterm2
-	brew install --cask font-meslo-for-powerline
+	@echo "\nInstalling apps from Brewfile..."
+	brew bundle
 
 	@echo "Installing Oh My Zsh..."
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -39,24 +37,20 @@ setup:
 
 	@echo "Installing Homebrew..."
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew install wget  # Utility to download files from the web
-	brew install nmap  # Network exploration tool and security/port scanner
 
-	# Terminal setup
-	@echo "Installing iTerm2..."
-	brew install --cask iterm2  # Terminal emulator for macOS
+	@echo "Installing apps from Brewfile..."
+	brew bundle
 
 	@echo "Installing Oh My Zsh..."
-	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended # Oh My Zsh framework for managing Zsh configuration
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 	@echo "Installed Oh My Zsh. $$SHELL"
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k || true  # Theme for Zsh
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k || true
 	echo 'source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
-	brew install --cask font-meslo-for-powerline  # Font with Powerline symbols
 
 	@echo "Installing Oh My Zsh plugins..."
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting  # Syntax highlighting for Zsh
-	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions  # Fish-like autosuggestions for Zsh
-	git clone https://github.com/zsh-users/zsh-completions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions  # Additional completion definitions for Zsh
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
+	git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
+	git clone https://github.com/zsh-users/zsh-completions $${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions || true
 
 	@echo "Updating .zshrc with new plugins..."
 	for plugin in $(PLUGINS); do \
@@ -67,14 +61,14 @@ setup:
 	@echo ".zshrc updated."
 
 	# Vim setup
-	echo 'syntax on' >> ~/.vimrc  # Enable syntax highlighting in Vim
-	echo 'set t_Co=256' >> ~/.vimrc  # Enable 256 colors in Vim
-	echo 'set fileencodings=utf-8' >> ~/.vimrc  # Set file encoding to UTF-8 in Vim
+	echo 'syntax on' >> ~/.vimrc
+	echo 'set t_Co=256' >> ~/.vimrc
+	echo 'set fileencodings=utf-8' >> ~/.vimrc
 
 	# Aliases
-	echo 'alias vsc="code"' >> ~/.zshrc  # Alias for Visual Studio Code
-	echo 'alias xcode="open -a Xcode"' >> ~/.zshrc  # Alias to open Xcode
-	echo 'alias simulator="open -a Simulator"' >> ~/.zshrc  # Alias to open iOS Simulator
+	echo 'alias vsc="code"' >> ~/.zshrc
+	echo 'alias xcode="open -a Xcode"' >> ~/.zshrc
+	echo 'alias simulator="open -a Simulator"' >> ~/.zshrc
 	source ~/.zshrc
 .PHONY: setup
 
@@ -90,98 +84,38 @@ configure:
 install-dev:
 	@echo "\nInstalling development tools...\n"
 
-	brew install gitmoji  # Gitmoji CLI for using emojis in commit messages
-	brew install --cask fork  # Git GUI client
-	brew install --cask visual-studio-code  # Code editor
 	python -m pip install --user virtualenv  # Virtual environments for Python
-	# brew install nvm # Node Version Manager
-	# brew install nodejs  # JavaScript runtime
-	# brew install --cask ngrok  # Secure introspectable tunnels to localhost
-
-	brew install --cask postman  # API development environment
-	# brew install --cask proxyman  # HTTP debugging proxy
 .PHONY: install-dev
 
 install-dev-bed:
 	@echo "\nInstalling backend tools...\n"
-
-	brew install --cask docker  # Container platform
-	brew install k9s  # Kubernetes CLI to manage clusters
-	brew install kubernetes-cli  # Kubernetes command-line tool
-	brew install helm  # Kubernetes package manager
-	brew install sops  # Secrets OPerationS
-	brew install prometheus  # Monitoring system and time series database
-	brew install go  # Go programming language
-	brew install --cask goland  # Go IDE
-
-	# cloud provider
-	brew install awscli  # AWS Command Line Interface
-	brew install azure-cli  # Azure Command Line Interface
-
-	# database
-	brew install mongosh  # MongoDB Shell
-	brew install --cask mongodb-compass  # MongoDB database management
-	brew install --cask studio-3t  # MongoDB GUI and IDE
-	# brew install mongodb/brew/libmongocrypt  # MongoDB client-side field level encryption
+	@echo "Backend apps installed via Brewfile."
 .PHONY: install-dev-bed
 
 install-dev-ios:
 	@echo "\nInstalling iOS development tools...\n"
 
-	brew install cocoapods  # Dependency manager for Swift and Objective-C
-	# sudo gem install cocoapods -v 1.7.1  # Specific version of CocoaPods
 	pod setup  # Set up CocoaPods master repo
-	brew install carthage  # Dependency manager for Cocoa
-	brew install sqlite  # Command-line interface for SQLite
-	# brew install fastlane  # Automation tool for iOS and Android
-	# brew install --cask dash  # API documentation browser
-	# brew install --cask android-studio  # Android development environment
 .PHONY: install-dev-ios
 
 install-design:
 	@echo "\nInstalling design tools...\n"
-
-	brew install --cask figma  # Interface design tool
-	# brew install --cask zeplin  # Collaboration tool for designers and developers
+	@echo "Design apps installed via Brewfile."
 .PHONY: install-design
 
 install-productivity:
 	@echo "\nInstalling productivity tools...\n"
-
-	brew install bat  # A cat clone with syntax highlighting and Git integration
-	brew install --cask appcleaner  # Uninstall apps completely
-	brew install --cask the-unarchiver  # Archive extraction utility
-	brew install --cask eul  # System monitor for Mac
-	brew install --cask hiddenbar  # Manage menu bar items on Mac
-	brew install --cask time-out  # Break reminder app
-	brew install --cask microsoft-edge  # Web browser
-	# brew install --cask google-chrome  # Web browser
-	# brew install --cask brave-browser  # Privacy-focused web browser
-	brew install --cask notion  # All-in-one workspace for notes, tasks, databases, and more
-	# brew install --cask teamviewer  # Remote control and desktop sharing
-	# brew install --cask anydesk  # Remote desktop application
-	# brew install --cask typora  # Markdown editor
-	# brew install --cask macdown  # Markdown editor
+	@echo "Productivity apps installed via Brewfile."
 .PHONY: install-productivity
 
 install-teamwork:
 	@echo "\nInstalling teamwork tools...\n"
-
-	# brew install --cask hamsket-nightly  # Free and open source messaging and emailing app
-	brew install --cask zoom  # Video communication tool
-	brew install --cask slack  # Collaboration hub for work
-	# brew install --cask discord  # Voice, video, and text chat app
-	# brew install --cask telegram  # Messaging app with a focus on speed and security
-	# brew install --cask skype  # Video and voice call app
-	# brew install --cask microsoft-teams  # Collaboration and productivity tool
+	@echo "Teamwork apps installed via Brewfile."
 .PHONY: install-teamwork
 
 install-fun:
 	@echo "\nInstalling fun tools...\n"
-
-	brew install --cask spotify  # Music streaming service
-	# brew install --cask vlc  # Media player
-	# brew install --cask tradingview  # Charting and analysis tool for financial markets
+	@echo "Fun apps installed via Brewfile."
 .PHONY: install-fun
 
 preferences:
