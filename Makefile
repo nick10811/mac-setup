@@ -54,8 +54,8 @@ setup:
 
 	@echo "Updating .zshrc with new plugins..."
 	for plugin in $(PLUGINS); do \
-		if ! grep -q "$plugin" ~/.zshrc; then \
-			sed -i '' "/^plugins=/ s/)/ $plugin)/" ~/.zshrc; \
+		if ! grep -q "$$plugin" ~/.zshrc; then \
+			sed -i '' "/^plugins=/ s/)/ $$plugin)/" ~/.zshrc; \
 		fi; \
 	done
 	@echo ".zshrc updated."
@@ -69,7 +69,7 @@ setup:
 	echo 'alias vsc="code"' >> ~/.zshrc
 	echo 'alias xcode="open -a Xcode"' >> ~/.zshrc
 	echo 'alias simulator="open -a Simulator"' >> ~/.zshrc
-	source ~/.zshrc
+	@echo "\nSetup complete. Run 'source ~/.zshrc' to reload your shell."
 .PHONY: setup
 
 configure:
