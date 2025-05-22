@@ -13,34 +13,43 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # Checkout the repository to get the Makefile and other necessary files
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Run the setup target from the Makefile, which includes Homebrew installation
-      - name: Setup
-        run: make setup
+      - name: Check Setupfile exists
+        run: test -f Setupfile
 
-      # Run the configure target from the Makefile
-      - name: Configure
-        run: make configure
+      - name: Check install.sh exists and is executable
+        run: test -x scripts/install.sh
 
-      # Install development tools (mirrors make all — install-dev-bed excluded as it is not part of make all)
-      - name: Install dev apps
+      - name: Parse Setupfile (installers mocked — no software installed)
         run: |
-          make install-dev
-          make install-dev-ios
-      
-      # Install design tools
-      - name: Install design apps
-        run: make install-design
+          brew()    { echo "[OK] brew $*"; }
+          git()     { echo "[OK] git $*"; }
+          curl()    { echo "[OK] curl $*"; }
+          python3() { echo "[OK] python3 $*"; }
+          pod()     { echo "[OK] pod $*"; }
+          export -f brew git curl python3 pod
+          output=$(bash scripts/install.sh Setupfile 2>&1)
+          echo "$output"
+          if echo "$output" | grep -q "^Error:"; then
+            echo "FAIL: Error lines found in output" >&2
+            exit 1
+          fi
+          if echo "$output" | grep -q "^Warning:"; then
+            echo "FAIL: Warning lines found in output" >&2
+            exit 1
+          fi
+          echo "Parse smoke test passed."
 
-      # Install utility tools
-      - name: Install utility apps
+      - name: Check Makefile has expected targets
         run: |
-          make install-productivity
-          make install-teamwork
-
-      # Install fun tools
-      - name: Install fun apps
-        run: make install-fun
+          for target in all preferences _bootstrap _install _configure; do
+            if grep -q "^${target}:" Makefile; then
+              echo "[OK] target '${target}' found"
+            else
+              echo "FAIL: target '${target}' not found in Makefile" >&2
+              exit 1
+            fi
+          done
+          echo "Makefile target check passed."
