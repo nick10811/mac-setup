@@ -25,11 +25,16 @@ ZSH_PLUGIN_NAMES=()
 
 _install_plugin() {
   local name="$1"
+  local provided_url="${2:-}"
   local url
-  url=$(_plugin_url "$name")
+  if [[ -n "$provided_url" ]]; then
+    url="$provided_url"
+  else
+    url=$(_plugin_url "$name")
+  fi
 
   if [[ -z "$url" ]]; then
-    echo "Warning: unknown plugin '$name' — skipping (add it to _plugin_url in install.sh)" >&2
+    echo "Warning: unknown plugin '$name' — skipping (add URL in Setupfile or add to _plugin_url in install.sh)" >&2
     return
   fi
 
@@ -50,6 +55,8 @@ while IFS= read -r line; do
   keyword=$(awk '{print $1}' <<< "$line")
   # Extract first double-quoted value; strip the quotes (grep exits 1 on no match — suppress with ||)
   value=$(grep -o '"[^"]*"' <<< "$line" | head -1 | tr -d '"' || true)
+  # Extract optional second quoted value (used as plugin URL)
+  url=$(grep -o '"[^"]*"' <<< "$line" | sed -n '2p' | tr -d '"' || true)
 
   # Guard: skip keywords that require a value if none was found
   if [[ -z "$value" && "$keyword" != "run" ]]; then
@@ -73,7 +80,7 @@ while IFS= read -r line; do
       ;;
     plugin)
       echo "Installing plugin: $value"
-      _install_plugin "$value"
+      _install_plugin "$value" "$url"
       ;;
     brew)
       echo "brew install $value"
