@@ -9,32 +9,15 @@ if [[ ! -f "$SETUPFILE" ]]; then
   exit 1
 fi
 
-# Plugin URL lookup — add cases here to support new plugins
-_plugin_url() {
-  case "$1" in
-    zsh-syntax-highlighting) echo "https://github.com/zsh-users/zsh-syntax-highlighting" ;;
-    zsh-autosuggestions)     echo "https://github.com/zsh-users/zsh-autosuggestions" ;;
-    zsh-completions)         echo "https://github.com/zsh-users/zsh-completions" ;;
-    powerlevel10k)           echo "https://github.com/romkatv/powerlevel10k" ;;
-    *)                       echo "" ;;
-  esac
-}
-
 ZSH_PLUGINS_FILE="$HOME/.zsh_plugins.zsh"
 ZSH_PLUGIN_NAMES=()
 
 _install_plugin() {
   local name="$1"
-  local provided_url="${2:-}"
-  local url
-  if [[ -n "$provided_url" ]]; then
-    url="$provided_url"
-  else
-    url=$(_plugin_url "$name")
-  fi
+  local url="${2:-}"
 
   if [[ -z "$url" ]]; then
-    echo "Warning: unknown plugin '$name' — skipping (add URL in Setupfile or add to _plugin_url in install.sh)" >&2
+    echo "Warning: unknown plugin '$name' — skipping (add URL as second argument in Setupfile)" >&2
     return
   fi
 
