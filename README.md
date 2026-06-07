@@ -19,13 +19,7 @@ Every app has an inline description. The file represents Nick's recommended defa
 make all
 ```
 
-That's it. `make all` installs Homebrew, Oh My Zsh, every app you kept in `Setupfile`, configures Git, and sets up your shell plugins.
-
-To also apply macOS system preferences (Dock, Finder, Trackpad, Terminal):
-
-```bash
-make preferences
-```
+That's it. `make all` installs Homebrew, Oh My Zsh, every app you kept in `Setupfile`, configures Git, sets up your shell plugins, and applies any macOS preferences you kept.
 
 ## Setupfile Format
 
@@ -41,3 +35,13 @@ Each line is `keyword "value"  # description`. Delete lines you don't want — t
 | `cask` | `brew install --cask` |
 | `pip` | `pip install` |
 | `run` | Run a shell command (e.g. `pod setup`) |
+
+## Preferencefile Format
+
+Each line is `"domain"  "key"  "-type value"  # description`. Delete lines you don't want applied — `make all` applies the remaining lines via `defaults write`.
+
+```
+"com.apple.dock"  "autohide"  "-bool false"  # Do not auto-hide the Dock
+```
+
+Keys with spaces (e.g. Terminal theme names) are supported because domain and key are always quoted.

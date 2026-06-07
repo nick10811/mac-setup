@@ -43,9 +43,32 @@ jobs:
           fi
           echo "Parse smoke test passed."
 
+      - name: Check Preferencefile exists
+        run: test -f Preferencefile
+
+      - name: Check apply_preferences.sh exists and is executable
+        run: test -x scripts/apply_preferences.sh
+
+      - name: Parse Preferencefile (mocked)
+        run: |
+          defaults() { echo "[OK] defaults $*"; }
+          killall()  { echo "[OK] killall $*"; }
+          export -f defaults killall
+          output=$(bash scripts/apply_preferences.sh Preferencefile 2>&1)
+          echo "$output"
+          if echo "$output" | grep -q "^Error:"; then
+            echo "FAIL: Error lines found in output" >&2
+            exit 1
+          fi
+          if echo "$output" | grep -q "^Warning:"; then
+            echo "FAIL: Warning lines found in output" >&2
+            exit 1
+          fi
+          echo "Preferencefile parse smoke test passed."
+
       - name: Check Makefile has expected targets
         run: |
-          for target in all preferences _bootstrap _install _configure; do
+          for target in all _bootstrap _install _preferences _configure; do
             if grep -q "^${target}:" Makefile; then
               echo "[OK] target '${target}' found"
             else
