@@ -35,4 +35,13 @@ Each line is `keyword "value"  # description`. Delete lines you don't want — t
 | `cask` | `brew install --cask` |
 | `pip` | `pip install` |
 | `run` | Run a shell command (e.g. `pod setup`) |
-| `preference` | Apply a macOS system preference via `defaults write` |
+
+## Preferencefile Format
+
+Each line is `"domain"  "key"  "-type value"  # description`. Delete lines you don't want applied — `make all` applies the remaining lines via `defaults write`.
+
+```
+"com.apple.dock"  "autohide"  "-bool false"  # Do not auto-hide the Dock
+```
+
+Keys with spaces (e.g. Terminal theme names) are supported because domain and key are always quoted.

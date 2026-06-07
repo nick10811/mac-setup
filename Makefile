@@ -1,5 +1,10 @@
-all: _bootstrap _install _configure
+all: _bootstrap _install _preferences _configure
 .PHONY: all
+
+_preferences:
+	@echo "\nApplying macOS preferences...\n"
+	@bash scripts/apply_preferences.sh Preferencefile
+.PHONY: _preferences
 
 _bootstrap:
 	@echo "\nInstalling Homebrew..."

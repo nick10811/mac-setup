@@ -1,0 +1,67 @@
+# Preferencefile
+# Edit this file before running make all.
+# Delete any line for a preference you do not want applied.
+# Format: "domain"  "key"  "-type value"
+
+# ── Trackpad ─────────────────────────────────────────────────────────────────
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "Clicking"                               "-bool true"  # Tap to click
+"com.apple.AppleMultitouchTrackpad"                   "Clicking"                               "-bool true"  # Tap to click (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadThreeFingerDrag"                "-bool true"  # Three-finger drag
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadThreeFingerDrag"                "-bool true"  # Three-finger drag (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadRightClick"                     "-bool true"  # Two-finger right-click
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadRightClick"                     "-bool true"  # Two-finger right-click (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadScroll"                         "-bool true"  # Two-finger scroll
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadScroll"                         "-bool true"  # Two-finger scroll (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadMomentumScroll"                 "-bool true"  # Momentum scroll
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadMomentumScroll"                 "-bool true"  # Momentum scroll (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadHorizScroll"                    "-bool true"  # Horizontal scroll
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadHorizScroll"                    "-bool true"  # Horizontal scroll (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadPinch"                          "-bool true"  # Pinch to zoom
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadPinch"                          "-bool true"  # Pinch to zoom (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadRotate"                         "-bool true"  # Rotate gesture
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadRotate"                         "-bool true"  # Rotate gesture (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadHandResting"                    "-bool true"  # Ignore accidental input while typing
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadHandResting"                    "-bool true"  # Ignore accidental input while typing (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadTwoFingerDoubleTapGesture"      "-int 1"      # Smart zoom (two-finger double-tap)
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadTwoFingerDoubleTapGesture"      "-int 1"      # Smart zoom (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadTwoFingerFromRightEdgeSwipeGesture"  "-int 3"  # Swipe from right edge for Notification Center
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadTwoFingerFromRightEdgeSwipeGesture"  "-int 3"  # Swipe from right edge (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadThreeFingerTapGesture"          "-int 2"      # Three-finger tap for Look Up
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadThreeFingerTapGesture"          "-int 2"      # Three-finger tap for Look Up (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadFourFingerHorizSwipeGesture"    "-int 2"      # Four-finger horizontal swipe (switch spaces)
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadFourFingerHorizSwipeGesture"    "-int 2"      # Four-finger horizontal swipe (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadFourFingerVertSwipeGesture"     "-int 2"      # Four-finger vertical swipe (Mission Control)
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadFourFingerVertSwipeGesture"     "-int 2"      # Four-finger vertical swipe (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadFourFingerPinchGesture"         "-int 2"      # Four-finger pinch (Launchpad)
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadFourFingerPinchGesture"         "-int 2"      # Four-finger pinch (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadFiveFingerPinchGesture"         "-int 2"      # Five-finger pinch (Launchpad)
+"com.apple.AppleMultitouchTrackpad"                   "TrackpadFiveFingerPinchGesture"         "-int 2"      # Five-finger pinch (built-in trackpad)
+"com.apple.driver.AppleBluetoothMultitouch.trackpad"  "USBMouseStopsTrackpad"                  "-bool false" # Trackpad works even when USB mouse is connected
+"com.apple.AppleMultitouchTrackpad"                   "USBMouseStopsTrackpad"                  "-bool false" # Trackpad works even when USB mouse is connected (built-in trackpad)
+
+# ── Dock ──────────────────────────────────────────────────────────────────────
+"com.apple.dock"  "autohide"                    "-bool false"  # Do not auto-hide the Dock
+"com.apple.dock"  "magnification"               "-bool true"   # Enable magnification
+"com.apple.dock"  "largesize"                   "-int 128"     # Magnification size
+"com.apple.dock"  "show-recents"                "-bool false"  # Hide recent apps in Dock
+"com.apple.dock"  "showAppExposeGestureEnabled" "-bool true"   # Enable App Exposé gesture
+
+# ── Finder ────────────────────────────────────────────────────────────────────
+"NSGlobalDomain"    "AppleShowAllExtensions"          "-bool true"   # Always show file extensions
+"com.apple.finder"  "AppleShowAllFiles"               "-bool true"   # Show hidden files
+"com.apple.finder"  "ShowStatusBar"                   "-bool true"   # Show status bar
+"com.apple.finder"  "ShowPathbar"                     "-bool true"   # Show path bar
+"com.apple.finder"  "ShowExternalHardDrivesOnDesktop" "-bool true"   # Show external drives on Desktop
+"com.apple.finder"  "ShowRemovableMediaOnDesktop"     "-bool true"   # Show removable media on Desktop
+"com.apple.finder"  "SidebarShowingiCloudDesktop"     "-bool false"  # Hide iCloud Desktop in sidebar
+
+# ── Terminal ──────────────────────────────────────────────────────────────────
+"com.apple.Terminal"  "Default Window Settings"  "-string Pro"  # Use Pro theme by default
+"com.apple.Terminal"  "Startup Window Settings"  "-string Pro"  # Open Pro theme on startup
+
+# ── Xcode ─────────────────────────────────────────────────────────────────────
+"com.apple.dt.Xcode"  "DVTTextShowAuthors"                      "-bool false"  # Hide blame authors
+"com.apple.dt.Xcode"  "DVTTextShowFoldingSidebar"               "-bool true"   # Show code folding ribbon
+"com.apple.dt.Xcode"  "DVTTextShowMinimap"                      "-bool false"  # Hide minimap
+"com.apple.dt.Xcode"  "IBAppliesAutoResizingRulesWhileResizing" "-bool false"  # Disable IB auto-resizing rules while resizing
+"com.apple.dt.Xcode"  "IDEAlwaysShowCompressedStackFrames"      "-bool false"  # Do not always show compressed stack frames

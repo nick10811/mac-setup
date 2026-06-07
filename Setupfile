@@ -80,20 +80,3 @@ cask   "microsoft-teams"                        # Enterprise collaboration
 cask   "spotify"                                # Music streaming
 cask   "vlc"                                    # Media player
 cask   "tradingview"                            # Financial charting and analysis
-
-# ── macOS Preferences ────────────────────────────────────────────────────────
-# Format: preference "domain" "key -type value"
-# Delete lines you don't want applied.
-preference  "com.apple.driver.AppleBluetoothMultitouch.trackpad"  "TrackpadThreeFingerDrag -bool true"       # Enable three-finger drag
-preference  "com.apple.AppleMultitouchTrackpad"                   "TrackpadThreeFingerDrag -bool true"       # Enable three-finger drag (built-in)
-preference  "com.apple.driver.AppleBluetoothMultitouch.trackpad"  "Clicking -bool true"                     # Tap to click
-preference  "com.apple.AppleMultitouchTrackpad"                   "Clicking -bool true"                     # Tap to click (built-in)
-preference  "com.apple.dock"                                       "autohide -bool true"                     # Auto-hide the Dock
-preference  "com.apple.dock"                                       "show-recents -bool false"                # Hide recent apps in Dock
-preference  "com.apple.dock"                                       "minimize-to-application -bool true"      # Minimize windows into app icon
-preference  "NSGlobalDomain"                                       "AppleShowAllExtensions -bool true"       # Always show file extensions
-preference  "com.apple.finder"                                     "AppleShowAllFiles -bool true"            # Show hidden files
-preference  "com.apple.finder"                                     "ShowStatusBar -bool true"                # Show status bar in Finder
-preference  "com.apple.finder"                                     "ShowPathbar -bool true"                  # Show path bar in Finder
-preference  "com.apple.Terminal"                                   "\"Default Window Settings\" -string Pro" # Terminal Pro theme
-preference  "com.apple.Terminal"                                   "\"Startup Window Settings\" -string Pro" # Terminal Pro theme on startup
