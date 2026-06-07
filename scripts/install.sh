@@ -4,6 +4,14 @@ set -euo pipefail
 
 SETUPFILE="${1:-Setupfile}"
 
+if ! command -v brew &>/dev/null; then
+  if [ -x /opt/homebrew/bin/brew ]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+  elif [ -x /usr/local/bin/brew ]; then
+    export PATH="/usr/local/bin:$PATH"
+  fi
+fi
+
 if [[ ! -f "$SETUPFILE" ]]; then
   echo "Error: $SETUPFILE not found" >&2
   exit 1
