@@ -30,7 +30,9 @@ jobs:
           curl()    { echo "[OK] curl $*"; }
           python3() { echo "[OK] python3 $*"; }
           pod()     { echo "[OK] pod $*"; }
-          export -f brew git curl python3 pod
+          defaults(){ echo "[OK] defaults $*"; }
+          killall() { echo "[OK] killall $*"; }
+          export -f brew git curl python3 pod defaults killall
           output=$(bash scripts/install.sh Setupfile 2>&1)
           echo "$output"
           if echo "$output" | grep -q "^Error:"; then
@@ -45,7 +47,7 @@ jobs:
 
       - name: Check Makefile has expected targets
         run: |
-          for target in all preferences _bootstrap _install _configure; do
+          for target in all _bootstrap _install _configure; do
             if grep -q "^${target}:" Makefile; then
               echo "[OK] target '${target}' found"
             else

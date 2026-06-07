@@ -91,6 +91,19 @@ while IFS= read -r line; do
       echo "Running: $cmd"
       eval "$cmd"
       ;;
+    preference)
+      if [[ -z "$url" ]]; then
+        echo "Warning: preference '$value' missing second argument — skipping" >&2
+        continue
+      fi
+      echo "Applying preference: defaults write $value $url"
+      # shellcheck disable=SC2086
+      defaults write "$value" $url
+      case "$value" in
+        *[Dd]ock*)   killall Dock   2>/dev/null || true ;;
+        *[Ff]inder*) killall Finder 2>/dev/null || true ;;
+      esac
+      ;;
     *)
       echo "Warning: unknown keyword '$keyword' — skipping" >&2
       ;;

@@ -1,16 +1,6 @@
 all: _bootstrap _install _configure
 .PHONY: all
 
-preferences:
-	@echo "\nApplying macOS preferences...\n"
-	defaults import com.apple.dock mac_preferences/com.apple.dock
-	defaults import com.apple.finder mac_preferences/com.apple.finder
-	defaults import com.apple.driver.AppleBluetoothMultitouch.trackpad mac_preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad
-	defaults import com.apple.Terminal mac_preferences/com.apple.Terminal
-	killall Dock Finder
-	@echo "macOS preferences applied."
-.PHONY: preferences
-
 _bootstrap:
 	@echo "\nInstalling Homebrew..."
 	@command -v brew > /dev/null || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
