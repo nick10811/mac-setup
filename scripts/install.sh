@@ -29,7 +29,12 @@ _install_plugin() {
     return
   fi
 
-  local dest="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$name"
+  local dest
+  if [[ "$name" == "powerlevel10k" ]]; then
+    dest="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/$name"
+  else
+    dest="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$name"
+  fi
   if [[ ! -d "$dest" ]]; then
     git clone --depth=1 "$url" "$dest"
   else
