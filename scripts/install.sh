@@ -39,6 +39,38 @@ _install_plugin() {
   ZSH_PLUGIN_NAMES+=("$name")
 }
 
+_install_theme() {
+  local name="$1"
+  local url="${2:-}"
+
+  if [[ -z "$url" ]]; then
+    echo "Warning: no URL provided for theme '$name' — skipping" >&2
+    return
+  fi
+
+  local dest="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/$name"
+  if [[ ! -d "$dest" ]]; then
+    git clone --depth=1 "$url" "$dest"
+  else
+    echo "Theme '$name' already installed, skipping clone."
+  fi
+
+  local theme_line="ZSH_THEME=\"$name/$name\""
+  touch "$HOME/.zshrc"
+  if grep -q '^ZSH_THEME=' "$HOME/.zshrc"; then
+    local tmp
+    tmp=$(mktemp)
+    sed "s|^ZSH_THEME=.*|$theme_line|" "$HOME/.zshrc" > "$tmp"
+    cat "$tmp" > "$HOME/.zshrc"
+    rm "$tmp"
+  else
+    echo "$theme_line" >> "$HOME/.zshrc"
+  fi
+}
+
+echo "Installing theme: powerlevel10k"
+_install_theme "powerlevel10k" "https://github.com/romkatv/powerlevel10k"
+
 while IFS= read -r line; do
   # Skip blank lines and comments
   [[ "$line" =~ ^[[:space:]]*(#|$) ]] && continue

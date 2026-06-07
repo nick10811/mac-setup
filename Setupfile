@@ -13,7 +13,6 @@ gitignore "linux,swift,xcode,macos,objective-c,visualstudiocode"
 plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting"  # Syntax highlighting for Zsh
 plugin "zsh-autosuggestions"     "https://github.com/zsh-users/zsh-autosuggestions"      # Fish-like autosuggestions
 plugin "zsh-completions"         "https://github.com/zsh-users/zsh-completions"          # Additional completion definitions
-plugin "powerlevel10k"           "https://github.com/romkatv/powerlevel10k"              # Powerlevel10k theme
 brew   "wget"                                   # Download files from the web
 brew   "nmap"                                   # Network exploration and port scanner
 cask   "iterm2"                                 # Terminal emulator for macOS
